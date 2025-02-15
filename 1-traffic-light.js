@@ -4,18 +4,24 @@
  * functions, as and when needed.
  */
 
-const getCurrentState = trafficLight => {
-  return trafficLight;
-    // TODO
+function getCurrentState(trafficLight) {  
+  return trafficLight.possibleStates[trafficLight.stateIndex];
+  // TODO
   // Should return the current state (i.e. colour) of the `trafficLight`
   // object passed as a parameter.
 }
 
 function getNextStateIndex(trafficLight) {
-    if (trafficLight == "green") {
-        return
-    }
-  // TODO
+  if (trafficLight.possibleStates[trafficLight.stateIndex] === 'green') {
+    trafficLight.stateIndex++;
+  } else if (trafficLight.possibleStates[trafficLight.stateIndex] === 'orange'){
+    trafficLight.stateIndex++;
+  } else {
+    trafficLight.stateIndex = 0;
+  }
+  return trafficLight.stateIndex;
+
+  // TODOs
   // Return the index of the next state of the `trafficLight` such that:
   // - if the color is green, it will turn to orange
   // - if the color is orange, it will turn to red
